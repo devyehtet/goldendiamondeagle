@@ -1,0 +1,5 @@
+import type {Metadata} from 'next';
+import {company} from '@/lib/catalog';
+import Gallery from '@/components/catalog/Gallery';
+export const metadata:Metadata={title:'Certificates & Achievements'};
+export default function Certificates(){const photos=company.images.filter(p=>p.page==='certificates');return <main className="pt-[116px]"><section className="page-heading"><div className="max-w-7xl mx-auto"><p className="eyebrow">Company credentials</p><h1>Certificates & achievements</h1><p className="page-intro">Explore Golden Diamond Eagle’s company documents and partner certificates. Select a document to view it at full size.</p></div></section><section className="section-shell grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="certifications">{photos.map((p,i)=><div key={p.src} className="bg-white rounded-xl p-4 border border-border-subtle"><Gallery images={[p]} label={`Certificate & achievement ${i+1}`}/><h2 className="text-sm font-semibold mt-4">Company document {i+1}</h2><a href={p.src!} target="_blank" rel="noopener noreferrer" className="text-xs text-primary font-semibold inline-block mt-2">Open original image ↗</a></div>)}</section></main>;}
